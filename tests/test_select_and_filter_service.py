@@ -1,4 +1,4 @@
-from unittest.mock import Mock
+from unittest.mock import MagicMock
 import pytest
 from app.lib import Yahoo as yh
 import pandas as pd
@@ -29,6 +29,7 @@ PREV_QUARTERS_TO_CONSIDER_FOR_POSITIVE_OP_PG = [
 ]  # put atleast [0] or maximum [0,-1,-2] quarters
 
 company = yh.Yahoo("AAPL")
+
 
 def test_calculate_free_cash_flow():
     assert company.calculate_free_cash_flow(0) == 99584000000.0
