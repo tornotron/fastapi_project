@@ -32,5 +32,9 @@
         }
     },
     "terminal.integrated.defaultProfile.linux": "CondaEnv",
-    "task.autoDetect": "on"
+    "task.autoDetect": "on",
+    // Setup python path for pylance
+    "python.analysis.extraPaths": [
+        "~/ProgramFiles/ibkr/twsapi_macunix.1019.04/IBJts/source/pythonclient",
+    ],
 }
