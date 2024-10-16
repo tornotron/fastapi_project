@@ -194,6 +194,7 @@ class StockFilteringService:
                     CriteriaPositivityFalg[ValidationCriteria.TREND_INTRADAY] = True
                     Trend["Intraday"] = True
                 else:
+                    CriteriaPositivityFalg[ValidationCriteria.TREND_INTRADAY] = False
                     Trend["Intraday"] = False
 
             if ValidationCriteria.TREND_SWING in criteria:
@@ -204,6 +205,7 @@ class StockFilteringService:
                     CriteriaPositivityFalg[ValidationCriteria.TREND_SWING] = True
                     Trend["Swing"] = True
                 else:
+                    CriteriaPositivityFalg[ValidationCriteria.TREND_SWING] = False
                     Trend["Swing"] = False
             if ValidationCriteria.TREND_POSITIONAL in criteria:
                 if data_provider.get_trend_favorability(
@@ -215,6 +217,7 @@ class StockFilteringService:
                     CriteriaPositivityFalg[ValidationCriteria.TREND_POSITIONAL] = True
                     Trend["Positional"] = True
                 else:
+                    CriteriaPositivityFalg[ValidationCriteria.TREND_POSITIONAL] = False
                     Trend["Positional"] = False
 
             if ValidationCriteria.TREND_INTR_MATCH_SWING in criteria:
@@ -241,6 +244,10 @@ class StockFilteringService:
                     CriteriaPositivityFalg[
                         ValidationCriteria.TREND_INTR_MATCH_SWING
                     ] = True
+                else:
+                    CriteriaPositivityFalg[
+                        ValidationCriteria.TREND_INTR_MATCH_SWING
+                    ] = False
             if ValidationCriteria.TREND_INTR_MATCH_POS in criteria:
                 if Trend["Intraday"] == None:
                     if data_provider.get_trend_favorability(
@@ -264,6 +271,10 @@ class StockFilteringService:
                     ]
                     CriteriaPositivityFalg[ValidationCriteria.TREND_INTR_MATCH_POS] = (
                         True
+                    )
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.TREND_INTR_MATCH_POS] = (
+                        False
                     )
             if ValidationCriteria.TREND_SWING_MATCH_POS in criteria:
                 if Trend["Swing"] == None:
@@ -289,32 +300,48 @@ class StockFilteringService:
                     CriteriaPositivityFalg[ValidationCriteria.TREND_SWING_MATCH_POS] = (
                         True
                     )
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.TREND_SWING_MATCH_POS] = (
+                        False
+                    )
             if ValidationCriteria.INDEX_TREND in criteria:
                 if data_provider.get_index_trend_favorability(db, ticker):
                     points += self.CriteriaWeightage[ValidationCriteria.INDEX_TREND]
                     CriteriaPositivityFalg[ValidationCriteria.INDEX_TREND] = True
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.INDEX_TREND] = False
             if ValidationCriteria.GLOBAL_INDEX_TREND in criteria:
                 if data_provider.get_global_index_trend_favorability(db, ticker):
                     points += self.CriteriaWeightage[
                         ValidationCriteria.GLOBAL_INDEX_TREND
                     ]
                     CriteriaPositivityFalg[ValidationCriteria.GLOBAL_INDEX_TREND] = True
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.GLOBAL_INDEX_TREND] = (
+                        False
+                    )
             if ValidationCriteria.MARKET_TREND_NEWS in criteria:
                 if data_provider.get_market_trend_news_favorability(db, ticker):
                     points += self.CriteriaWeightage[
                         ValidationCriteria.MARKET_TREND_NEWS
                     ]
                     CriteriaPositivityFalg[ValidationCriteria.MARKET_TREND_NEWS] = True
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.MARKET_TREND_NEWS] = False
             if ValidationCriteria.MOMENTUM in criteria:
                 if data_provider.get_momentum_favorability(db, ticker):
                     points += self.CriteriaWeightage[ValidationCriteria.MOMENTUM]
                     CriteriaPositivityFalg[ValidationCriteria.MOMENTUM] = True
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.MOMENTUM] = False
             if ValidationCriteria.OPTIONS_INTEREST in criteria:
                 if data_provider.get_options_interest_favorablitiy(db, ticker):
                     points += self.CriteriaWeightage[
                         ValidationCriteria.OPTIONS_INTEREST
                     ]
                     CriteriaPositivityFalg[ValidationCriteria.OPTIONS_INTEREST] = True
+                else:
+                    CriteriaPositivityFalg[ValidationCriteria.OPTIONS_INTEREST] = False
 
             points_table.append(
                 {
