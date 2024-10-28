@@ -37,4 +37,6 @@
     "python.analysis.extraPaths": [
         "~/ProgramFiles/ibkr/twsapi_macunix.1019.04/IBJts/source/pythonclient",
     ],
+    "csv-preview.numberFormat": "f4",
+    "csv-preview.formatValues": "never",
 }
